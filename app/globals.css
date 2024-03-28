@@ -2,26 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  max-width: 100%;
+  background-color: #eeeeee;
+}
+
+*,
+body,
+:root {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.navbackground {
+  background: url("../public/radar-image-363841.png") center / cover;
+  /* height: 150px; */
+  position: relative;
+  z-index: 2;
+}
+.navbackground::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.467) 50%, transparent);
+  background-color: #0003;
+}
+
+.showMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  transform-origin: center;
+  filter: brightness(1);
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s;
+}
+.closeMenu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50px) scale(1.1);
+  filter: brightness(3);
+  transform-origin: center;
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s;
+}
+.headingStyling {
+  position: relative;
+}
+.headingStyling::after {
+  content: "";
+  position: absolute;
+  bottom: -7.5px;
+  left: 0;
+  width: 60%;
+  height: 0.4rem;
+  background: rgb(255, 255, 255);
 }
