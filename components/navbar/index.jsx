@@ -7,6 +7,7 @@ import { HiUser, HiOutlineMail } from "react-icons/hi";
 
 import { useDispatch } from "react-redux";
 import { searchSliceActions } from "../../setting/slice/searchSlice";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
   const [toggleFocus, setToggleFocus] = useState(false);
@@ -67,9 +68,13 @@ export default function Navbar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchSliceActions.setSearch(searchValue));
-    console.log(searchValue);
+    inputRef.current.value = "";
+    inputRef.current?.focus({ focusVisible: true });
+    setSearchValue("");
+    if (searchValue === "") {
+      toast.error("oopps! you didn't enter any country name!");
+    }
   };
-
   return (
     <>
       <div

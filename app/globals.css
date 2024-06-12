@@ -60,3 +60,30 @@ body,
   height: 0.4rem;
   background: rgb(255, 255, 255);
 }
+.animationDiv {
+  position: relative;
+  overflow: hidden;
+}
+.animationDiv::before {
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: -5px;
+  width: 30%;
+  height: 100%;
+  background: rgba(207, 205, 205, 0.507);
+  transform: skewX(-10deg);
+  box-shadow: 2px 5px 50px #000;
+  animation: divAnimation 1.1s infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes divAnimation {
+  0% {
+    left: -5px;
+  }
+  100% {
+    left: 400px;
+    width: 70%;
+  }
+}

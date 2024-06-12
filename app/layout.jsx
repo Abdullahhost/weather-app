@@ -3,7 +3,8 @@ import "./globals.css";
 
 import Navbar from "../components/navbar";
 import { NextAuthProvider } from "./Providers";
-import { RProviders } from "./RProviders";
+import { ReduxProviders } from "./RProviders";
+import ToastContext from "@/context/ToastContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          <RProviders>
+          <ReduxProviders>
+            <ToastContext />
             <Navbar />
             {children}
-          </RProviders>
+          </ReduxProviders>
         </NextAuthProvider>
       </body>
     </html>
